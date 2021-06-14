@@ -12,8 +12,8 @@ public class CodeHealerExampleApplication {
 
 
     public int getSum(int[] array) {
-        String argStr = array.toString(); // Noncompliant
-        int argHash = array.hashCode(); // Noncompliant
+        String argStr = java.util.Arrays.toString(array); // Noncompliant
+        int argHash = java.util.Arrays.hashCode(array); // Noncompliant
         int sum = 0;
         for (int i = 0; i < array.length; i++) {
             sum += array[i];
