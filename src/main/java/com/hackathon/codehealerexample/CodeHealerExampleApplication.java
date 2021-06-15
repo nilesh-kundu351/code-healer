@@ -13,6 +13,9 @@ public class CodeHealerExampleApplication {
     }
 
     public String getSubString(String s, int start, int end) {
+        if (s == null) {
+            return null;
+        }
         return s.substring(start, end);
     }
 
