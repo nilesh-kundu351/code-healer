@@ -25,7 +25,7 @@ public class User {
         String lastName = getLastName();
 
         // Non-compliant;
-        return firstName == lastName;
+        return firstName.equals(lastName);
     }
 
     public String getLastName() {
