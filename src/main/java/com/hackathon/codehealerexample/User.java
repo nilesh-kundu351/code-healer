@@ -10,7 +10,7 @@ public class User {
      * 1656: Variables should not be self-assigned
      **/
     public void setName(String value) {
-        value = value;
+        this.value = value;
     }
 
     String greet(String name) {
