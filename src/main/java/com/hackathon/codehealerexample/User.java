@@ -55,7 +55,7 @@ public class User {
         }
     }
 
-    public static int x = 5;
+    public static final int x = 5;
 
     public int sum(int a, int b) {
         return a + b;
