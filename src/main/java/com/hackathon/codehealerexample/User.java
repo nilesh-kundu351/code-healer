@@ -51,7 +51,7 @@ public class User {
      * 3067: "getClass" should not be used for synchronization
      **/
     public void doSomethingSynchronized() {
-        synchronized (this.getClass()) {  // Noncompliant
+        synchronized (com.hackathon.codehealerexample.User.class) {  // Noncompliant
             System.out.println("In synchronized block");
         }
     }
