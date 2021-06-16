@@ -43,6 +43,7 @@ public class User {
             }
         } catch (InterruptedException e) { // Noncompliant; logging is not enough
             System.out.println("Exception occurred");
+			java.lang.Thread.currentThread().interrupt();
         }
     }
 
