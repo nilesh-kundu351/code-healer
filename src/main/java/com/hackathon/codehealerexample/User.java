@@ -113,8 +113,8 @@ public class User {
      * 2184: Math operands should be cast before assignment
      **/
     public void castExample() {
-        float twoThirds = 2 / 3; // Noncompliant; int division. Yields 0.0
-        long millisInYear = 1_000 * 3_600 * 24 * 365; // Noncompliant; int multiplication. Yields 1471228928
+        float twoThirds = (float) 2 / 3; // Noncompliant; int division. Yields 0.0
+        long millisInYear = (((long) 1000 * 3_600) * 24) * 365; // Noncompliant; int multiplication. Yields 1471228928
 
         System.out.println("Two-Thirds is " + twoThirds);
         System.out.println("MillisInYear " + millisInYear);
