@@ -14,6 +14,7 @@ public class Employee {
         this.mgrName = mgrName;
     }
 
-
-    private
+    public String getMgrName() {
+        return mgrName;
+    }
 }
