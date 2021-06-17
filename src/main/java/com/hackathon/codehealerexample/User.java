@@ -104,8 +104,8 @@ public class User {
     public void bigDecimalEx() {
         double d = 1.1;
 
-        BigDecimal bd1 = new BigDecimal(d); // Noncompliant; see comment above
-        BigDecimal bd2 = new BigDecimal(1.1); // Noncompliant; same result
+        BigDecimal bd1 = BigDecimal.valueOf(d); // Noncompliant; see comment above
+        BigDecimal bd2 = BigDecimal.valueOf(1.1); // Noncompliant; same result
 
         System.out.println("Big Decimal values are " + bd1 + " and " + bd2);
     }
