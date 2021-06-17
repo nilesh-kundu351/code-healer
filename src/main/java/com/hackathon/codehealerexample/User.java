@@ -10,7 +10,7 @@ public class User {
      * 1656: Variables should not be self-assigned
      **/
     public void setName(String value) {
-        value = value;
+        this.value = value;
     }
 
     String greet(String name) {
@@ -25,7 +25,7 @@ public class User {
         String lastName = getLastName();
 
         // Non-compliant;
-        return firstName == lastName;
+        return firstName.equals(lastName);
     }
 
     public String getLastName() {
@@ -43,6 +43,7 @@ public class User {
             }
         } catch (InterruptedException e) { // Noncompliant; logging is not enough
             System.out.println("Exception occurred");
+			java.lang.Thread.currentThread().interrupt();
         }
     }
 
@@ -50,7 +51,7 @@ public class User {
      * 3067: "getClass" should not be used for synchronization
      **/
     public void doSomethingSynchronized() {
-        synchronized (this.getClass()) {  // Noncompliant
+        synchronized (com.hackathon.codehealerexample.User.class) {  // Noncompliant
             System.out.println("In synchronized block");
         }
     }
@@ -74,8 +75,8 @@ public class User {
      **/
     public void arithmeticOps() {
         int[] x = new int[6];
-        String argStr = x.toString(); // Noncompliant
-        int argHash = x.hashCode(); // Noncompliant
+        String argStr = java.util.Arrays.toString(x); // Noncompliant
+        int argHash = java.util.Arrays.hashCode(x); // Noncompliant
 
         System.out.println("Args Str " + argStr + " and ArgHash " + argHash);
     }
@@ -86,8 +87,6 @@ public class User {
     public void unusedVariable() {
         int b;
         int i;
-
-        i = 9 + 7; // Noncompliant; calculation result not used before value is overwritten
         i = compute();
         b = i + 8;
 
@@ -104,8 +103,8 @@ public class User {
     public void bigDecimalEx() {
         double d = 1.1;
 
-        BigDecimal bd1 = new BigDecimal(d); // Noncompliant; see comment above
-        BigDecimal bd2 = new BigDecimal(1.1); // Noncompliant; same result
+        BigDecimal bd1 = BigDecimal.valueOf(d); // Noncompliant; see comment above
+        BigDecimal bd2 = BigDecimal.valueOf(1.1); // Noncompliant; same result
 
         System.out.println("Big Decimal values are " + bd1 + " and " + bd2);
     }
@@ -114,8 +113,8 @@ public class User {
      * 2184: Math operands should be cast before assignment
      **/
     public void castExample() {
-        float twoThirds = 2 / 3; // Noncompliant; int division. Yields 0.0
-        long millisInYear = 1_000 * 3_600 * 24 * 365; // Noncompliant; int multiplication. Yields 1471228928
+        float twoThirds = (float) 2 / 3; // Noncompliant; int division. Yields 0.0
+        long millisInYear = (((long) 1000 * 3_600) * 24) * 365; // Noncompliant; int multiplication. Yields 1471228928
 
         System.out.println("Two-Thirds is " + twoThirds);
         System.out.println("MillisInYear " + millisInYear);
