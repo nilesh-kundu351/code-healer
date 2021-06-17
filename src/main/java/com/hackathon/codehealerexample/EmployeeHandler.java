@@ -12,8 +12,14 @@ public class EmployeeHandler {
     }
     public Employee  getFirstEmployeeByManagerName(String managerName){
        for(Employee employee : employeeList){
-           if(managerName.equals(employee.getMgrName())){
-               return employee;
+           if (managerName == null) {
+               if( new String().equals(employee.getMgrName())){
+                   return employee;
+               }
+           } else {
+               if(managerName.equals(employee.getMgrName())){
+                   return employee;
+               }
            }
        }
        return null;
